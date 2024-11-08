@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+                <ul>
+                    <li><a href="./index.html"><img src="./assets/logo2.jpg" alt=""></a></li>
+                    <li><a href="./pages/bramha.html">Proyecto Bramha</a></li>
+                    <li><a href="./pages/rentas.html">Opciones en Renta</a></li>
+                </ul> 
+        </nav>
+    </header>
+    <div class="products" id="productList"></div>
+
+    <div>
+      <button class="cart__openButton">Abrir Carrito</button>
+    </div>
+
+    <div id="cartSidebar" class="cart__sidebar">
+      <button class="cart__close">X</button>
+
+      <div class="cart__container">
+        <h2>Tu carrito</h2>
+        <div class="cart__items"></div>
+      </div>
+
+      <div class="cart__totalPrice">Total: $0</div>
+    </div>
+
+    <div id="producto1"></div>
+    <div id="producto2"></div>
+
+    <script type="module" src="./js/app.js"></script>
+    <script type="module" src="./js/cart.js"></script>
+    <script type="module" src="./js/ui.js"></script>
+    <footer>
+        <div class="footer-container">
+        <div class="footer-row">
+            
+            <!-- About Section -->
+            <div class="footer-col">
+            <h4>Sobre Nosotros</h4>
+            <p>Somos una empresa familiar especializada en bienes raÃ­ces en Quintana Roo, MÃ©xico. Ofrecemos asesorÃ­a personalizada para ayudarte a encontrar la propiedad de tus sueÃ±os con la mejor atenciÃ³n y profesionalismo.</p>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="footer-col">
+            <h4>ContÃ¡ctanos</h4>
+            <ul>
+                <li><i class="fas fa-home"></i> Tulum, Quintana Roo, MÃ©xico</li>
+                <li><i class="fas fa-envelope"></i> contacto@tuinmobiliaria.com</li>
+                <li><i class="fas fa-phone"></i> +52 123 456 7890</li>
+            </ul>
+            </div>
+            <!-- Quick Links Section -->
+            <div class="footer-col">
+            <h4>Enlaces rÃ¡pidos</h4>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Propiedades</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            </div>
+            <!-- Social Media Section -->
+            <div class="footer-col">
+            <h4>SÃ­guenos</h4>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i><a>
+            </div>
+            </div>
+        </div>
+        <!-- Copyright Section -->
+        <div class="footer-row">
+            <p>&copy; 2024 Tu Inmobiliaria. Todos los derechos reservados.</p>
+        </div>
+        </div>
+    </footer>
+</body>
+</html>
