@@ -1,127 +1,158 @@
-// Obtener elementos
+// Array de productos
+const productosArray = [
+  {
+    id: 1,
+    nombre: "Casa Selva Zama",
+    precio: 30,
+    imagen: "./assets/SALA_PLAFON_GRIS copia.jpg",
+  },
+  {
+    id: 2,
+    nombre: "Aldea Zama",
+    precio: 15,
+    imagen:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkHcpbkFlDVA_UUcEjIdLsIhuuSFExa5i3Iw&s",
+  },
+  {
+    id: 3,
+    nombre: "Kamau Tulum",
+    precio: 20,
+    imagen:
+      "https://plalla.com/wp-content/uploads/2023/08/terraza-exterior-kamau-tulum.webp",
+  },
+];
+
+// Función para generar productos en el DOM
+function generarProductos() {
+  const productosContainer = document.querySelector(".productos-container");
+  productosContainer.innerHTML = ""; // Limpiamos el contenedor
+
+  productosArray.forEach((producto) => {
+    // Crear elementos de la tarjeta
+    const divProducto = document.createElement("div");
+    divProducto.classList.add("producto");
+    divProducto.setAttribute("data-id", producto.id);
+
+    divProducto.innerHTML = `
+      <img src="${producto.imagen}" alt="${producto.nombre}">
+      <div class="info">
+        <h3>${producto.nombre}</h3>
+        <p>$${producto.precio} MXN</p>
+        <button class="agregar-carrito">Agregar al Carrito</button>
+      </div>
+    `;
+
+    // Añadir evento de agregar al carrito
+    divProducto
+      .querySelector(".agregar-carrito")
+      .addEventListener("click", () => {
+        agregarProductoAlCarrito(producto.id, producto.nombre, producto.precio);
+      });
+
+    // Insertar la tarjeta en el contenedor
+    productosContainer.appendChild(divProducto);
+  });
+}
+
+// Obtener los elementos del DOM para el carrito
 const carritoContainer = document.getElementById("carrito-container");
-const carritoDesplegable = document.getElementById("carrito-desplegable");
 const listaCarrito = document.getElementById("lista-carrito");
 const totalCarrito = document.getElementById("total-carrito");
 const verCarritoButton = document.getElementById("ver-carrito");
+const carritoDesplegable = document.getElementById("carrito-desplegable");
 const vaciarCarritoButton = document.getElementById("vaciar-carrito");
 
-const botonesAgregar = document.querySelectorAll(".agregar-carrito");
+// Función para obtener el carrito desde el localStorage
+function obtenerCarrito() {
+  let carrito = JSON.parse(localStorage.getItem("carrito"));
+  if (!carrito) {
+    carrito = [];
+  }
+  return carrito;
+}
 
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+// Función para guardar el carrito en el localStorage
+function guardarCarrito(carrito) {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarCarritoUI(carrito);
+}
 
-// Función para actualizar la vista del carrito
-function actualizarCarrito() {
-  listaCarrito.innerHTML = "";
+// Función para actualizar el carrito en la interfaz de usuario
+function actualizarCarritoUI(carrito) {
+  listaCarrito.innerHTML = ""; // Limpiar lista de carrito
   let total = 0;
 
-  carrito.forEach((item) => {
+  // Recorrer los productos en el carrito y agregarlos al HTML
+  carrito.forEach((producto) => {
     const li = document.createElement("li");
     li.innerHTML = `
-      ${item.nombre} - $${item.precio} x ${item.cantidad} 
-      <button class="restar-cantidad" data-id="${item.id}">-</button> 
-      <button class="sumar-cantidad" data-id="${item.id}">+</button>
-      <button class="eliminar" data-id="${item.id}">Eliminar</button>
+      <span>${producto.nombre} - $${producto.precio} x ${producto.cantidad}</span>
+      <button class="eliminar-producto" data-id="${producto.id}">Eliminar</button>
     `;
     listaCarrito.appendChild(li);
-    total += item.precio * item.cantidad;
+    total += producto.precio * producto.cantidad;
   });
 
+  // Actualizar el total
   totalCarrito.textContent = total.toFixed(2);
-  verCarritoButton.textContent = `Carrito (${carrito.length})`;
 
-  // Guardar en el localStorage
-  localStorage.setItem("carrito", JSON.stringify(carrito));
+  // Actualizar el número de productos en el carrito
+  verCarritoButton.textContent = `Carrito (${carrito.length})`;
 }
 
-// Función para agregar al carrito
-function agregarAlCarrito(e) {
-  const producto = e.target.closest(".producto");
-  const id = producto.dataset.id;
-  const nombre = producto.querySelector("h3").textContent;
-  const precio = parseFloat(
-    producto.querySelector("p").textContent.replace("$", "")
-  );
+// Función para agregar productos al carrito
+function agregarProductoAlCarrito(id, nombre, precio) {
+  const carrito = obtenerCarrito();
 
   // Verificar si el producto ya está en el carrito
-  const productoEnCarrito = carrito.find((item) => item.id === id);
-
-  if (productoEnCarrito) {
-    productoEnCarrito.cantidad++;
+  const productoExistente = carrito.find((producto) => producto.id === id);
+  if (productoExistente) {
+    productoExistente.cantidad++;
   } else {
-    carrito.push({ id, nombre, precio, cantidad: 1 });
+    carrito.push({
+      id,
+      nombre,
+      precio,
+      cantidad: 1,
+    });
   }
 
-  actualizarCarrito();
+  guardarCarrito(carrito);
 }
 
-// Función para restar cantidad
-function restarCantidad(e) {
-  const id = e.target.dataset.id;
-  const producto = carrito.find((item) => item.id === id);
-
-  if (producto) {
-    producto.cantidad--;
-    if (producto.cantidad === 0) {
-      carrito = carrito.filter((item) => item.id !== id);
-    }
-  }
-
-  actualizarCarrito();
-}
-
-// Función para sumar cantidad
-function sumarCantidad(e) {
-  const id = e.target.dataset.id;
-  const producto = carrito.find((item) => item.id === id);
-
-  if (producto) {
-    producto.cantidad++;
-  }
-
-  actualizarCarrito();
-}
-
-// Función para eliminar producto del carrito
-function eliminarProducto(e) {
-  const id = e.target.dataset.id;
-  carrito = carrito.filter((item) => item.id !== id);
-  actualizarCarrito();
+// Función para eliminar productos del carrito
+function eliminarProductoDelCarrito(id) {
+  let carrito = obtenerCarrito();
+  carrito = carrito.filter((producto) => producto.id !== id);
+  guardarCarrito(carrito);
 }
 
 // Función para vaciar el carrito
 function vaciarCarrito() {
-  carrito = [];
-  actualizarCarrito();
+  guardarCarrito([]); // Limpiar el carrito
 }
 
-// Mostrar/ocultar el carrito desplegable
+// Evento para mostrar el carrito
 verCarritoButton.addEventListener("click", () => {
   carritoDesplegable.classList.toggle("show");
 });
 
-// Asignar los eventos de agregar productos al carrito
-botonesAgregar.forEach((boton) => {
-  boton.addEventListener("click", agregarAlCarrito);
-});
-
-// Asignar eventos a los botones de "restar", "sumar" y "eliminar"
-listaCarrito.addEventListener("click", (e) => {
-  if (e.target.classList.contains("restar-cantidad")) {
-    restarCantidad(e);
-  }
-
-  if (e.target.classList.contains("sumar-cantidad")) {
-    sumarCantidad(e);
-  }
-
-  if (e.target.classList.contains("eliminar")) {
-    eliminarProducto(e);
+// Evento para eliminar productos del carrito
+listaCarrito.addEventListener("click", (event) => {
+  if (event.target.classList.contains("eliminar-producto")) {
+    const id = event.target.getAttribute("data-id");
+    eliminarProductoDelCarrito(id);
   }
 });
 
-// Vaciar el carrito
-vaciarCarritoButton.addEventListener("click", vaciarCarrito);
+// Evento para vaciar el carrito
+vaciarCarritoButton.addEventListener("click", () => {
+  vaciarCarrito();
+});
 
-// Inicializar el carrito al cargar la página
-actualizarCarrito();
+// Al cargar la página, actualizar el carrito y los productos desde el array
+document.addEventListener("DOMContentLoaded", () => {
+  generarProductos();
+  const carrito = obtenerCarrito();
+  actualizarCarritoUI(carrito);
+});
