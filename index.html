@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tienda Online</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real State</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <!-- Barra de navegación -->
-  <nav id="navbar">
-    <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#quienes-somos">Quiénes Somos</a></li>
-    </ul>
-  </nav>
+    <!-- Profe dejo aclarado que empezo siendo un ecomerce de abrigos camisetas , etc pero a ultimo momento cambie por propiedades en alquiler -->
 
-  <!-- Contenido principal -->
-  <main>
-    <section id="productos">
-      <h2>Alquileres</h2>
-      <div class="productos-container"></div> <!-- Contenedor vacío donde se generarán los productos -->
-    </section>
-  </main>
-
-  <!-- Carrito de compras (fuera del header) -->
-  <div id="carrito-container">
-    <button id="ver-carrito">Carrito (0)</button>
-    <div id="carrito-desplegable">
-      <ul id="lista-carrito"></ul>
-      <div id="total">
-        <strong>Total: </strong>$<span id="total-carrito">0</span>
-      </div>
-      <button id="vaciar-carrito">Vaciar Carrito</button>
+    <div class="wrapper">
+        <header class="header-mobile">
+            <h1 class="logo">Alquileres</h1>
+            <button class="open-menu" id="open-menu">
+                <i class="bi bi-list"></i>
+            </button>
+        </header>
+        <aside>
+            <button class="close-menu" id="close-menu">
+                <i class="bi bi-x"></i>
+            </button>
+            <header>
+                <h1 class="logo">Alquileres</h1>
+            </header>
+            <nav>
+                <ul class="menu">
+                    <li>
+                        <button id="todos" class="boton-menu boton-categoria active"><i class="bi bi-hand-index-thumb-fill"></i> Todo lo disponible</button>
+                    </li>
+                    <li>
+                        <button id="abrigos" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> Aldea Zama</button>
+                    </li>
+                    <li>
+                        <button id="camisetas" class="boton-menu boton-categoria"><i class="bi bi-hand-index-thumb"></i> La Veleta</button>
+                    </li>
+                    <li>
+                        <a class="boton-menu boton-carrito" href="./carrito.html">
+                            <i class="bi bi-cart-fill"></i> Carrito <span id="numerito" class="numerito">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <p class="texto-footer">© 2022 Alquileres </p>
+            </footer>
+        </aside>
+        <main>
+            <h2 class="titulo-principal" id="titulo-principal">Todos los productos</h2>
+            <div id="contenedor-productos" class="contenedor-productos">
+                <!-- Esto se va a rellenar con JS -->
+            </div>
+        </main>
     </div>
-  </div>
-
-  <script src="./script.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/menu.js"></script>
 </body>
 </html>

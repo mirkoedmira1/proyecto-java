@@ -1,0 +1,76 @@
+
+
+[
+    {
+        "id": "abrigo-01",
+        "titulo": "Aldea Zama 1",
+        "imagen": "https://en.aldeazama.com/wp-content/uploads/2020/10/lotes-unifamiliares.jpg",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 1200
+    },
+    {
+        "id": "abrigo-02",
+        "titulo": "Aldea Zama 2",
+        "imagen": "https://storage.googleapis.com/mudafy-matrix-production/__sized__/properties/property_686086/2023-03-19_EB-KI5296-thumbnail-500x500-80.webp",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 14500
+    },
+    {
+        "id": "abrigo-03",
+        "titulo": "Aldea Zama 3",
+        "imagen": "https://www.bienesonline.com/mexico/photos/villa-en-preventa-en-aldea-zama--CAV3485571700246395-697.jpg",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 10650
+    },
+    {
+        "id": "abrigo-04",
+        "titulo": "Aldea Zama 4",
+        "imagen": "https://assets.easybroker.com/property_images/1438405/21493536/EB-EM8405.jpg?version=1580784890",
+        "categoria": {
+            "nombre": "Abrigos",
+            "id": "abrigos"
+        },
+        "precio": 10452
+    },
+    
+    {
+        "id": "camiseta-01",
+        "titulo": "Veleta 1",
+        "imagen": "https://assets.easybroker.com/property_images/1594777/24006221/EB-FC4777.jpg?version=1591728266",
+        "categoria": {
+            "nombre": "Camisetas",
+            "id": "camisetas"
+        },
+        "precio": 2320
+    },
+    {
+        "id": "camiseta-02",
+        "titulo": "Veleta 2",
+        "imagen": "https://img.resemmedia.com/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzLzIyNjkyOWY2LWQxZDEtNDczZS04M2ZkLWJlMWJmNDA3ZjIyZi9iOWM2NDYzNi0zZTc2LTQwNGEtOGZjYS02ZTQ3Yzg2OWQ4ZWQucG5nIiwiYnJhbmQiOiJSRVNFTSIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODQwLCJoZWlnaHQiOjYzMCwiZml0IjoiY292ZXIifX19",
+        "categoria": {
+            "nombre": "Camisetas",
+            "id": "camisetas"
+        },
+        "precio": 24100
+    },
+    {
+        "id": "camiseta-03",
+        "titulo": "Veleta 3",
+        "imagen": "https://img.lamudi.com.mx/eyJidWNrZXQiOiJwcmQtbGlmdWxsY29ubmVjdC1iYWNrZW5kLWIyYi1pbWFnZXMiLCJrZXkiOiJwcm9wZXJ0aWVzLzA3OGE3ZjUwLTBlMmEtNDU1OS1iMjFkLThjNWE1ZGVkOGRhOC9kM2Q5YTUxYy1jMmRkLTQ3NzUtYjQxMC0wZGNiNjM3NTcxN2QucG5nIiwiYnJhbmQiOiJMQU1VREkiLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjMyMCwiaGVpZ2h0IjoyNDAsImZpdCI6ImNvdmVyIn19fQ==",
+        "categoria": {
+            "nombre": "Camisetas",
+            "id": "camisetas"
+        },
+        "precio": 4000
+    }
+    
+]
